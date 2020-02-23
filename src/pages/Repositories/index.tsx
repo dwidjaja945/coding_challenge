@@ -13,10 +13,10 @@ import styles from './Repositories.module.scss';
 const Repositories=(): JSX.Element => {
     const [searchText, setSearchText]=React.useState('');
     const [typeAnchorEl, setTypeAnchorEl]=React.useState(null);
-    const [typeSearch, setTypeSearch]=React.useState('All');
+    const [typeSearch, setTypeSearch]=React.useState(null);
 
     const [languageAnchorEl, setLanguageAnchorEl]=React.useState(null);
-    const [languageSearch, setLanguageSearch]=React.useState('All');
+    const [languageSearch, setLanguageSearch]=React.useState(null);
 
     const { data: repositoryData } = useRepositoryContext();
 
@@ -28,6 +28,8 @@ const Repositories=(): JSX.Element => {
 
     const filterData = (search): void => {
         if (!search) {
+            setTypeSearch(null);
+            setLanguageSearch(null);
             return setData(repositoryData);
         };
         const lowerCaseSearch = search.toLowerCase();
@@ -38,6 +40,42 @@ const Repositories=(): JSX.Element => {
         });
         setData(filteredData);
     };
+
+    React.useEffect( () => {
+        if (typeSearch || languageSearch) {
+            const filteredData = repositoryData.filter(item => {
+                const isPrivate = item.private;
+                const lowerCaseType = typeSearch?.toLowerCase();
+                let returnLanguage = false;
+                let returnType = false;
+                if (item.language === languageSearch || !languageSearch) {
+                    returnLanguage = true;
+                };
+                if (!lowerCaseType) {
+                    returnType = true;
+                } else {
+                    switch (lowerCaseType) {
+                        case 'private':
+                            if (isPrivate) {
+                                returnType = true
+                            }
+                            break;
+                        case 'public':
+                            if (!isPrivate) {
+                                returnType = true;
+                            };
+                            break;
+                        default:
+                            break;
+                    };
+                }
+                return returnLanguage && returnType;
+            });
+            setData(filteredData);
+        } else {
+            filterData(searchText);
+        }
+    } , [typeSearch, languageSearch]);
     
     const handleSearchChange = (e): void => {
         // debounce method in the future
@@ -59,12 +97,12 @@ const Repositories=(): JSX.Element => {
         const seen={};
         const languages=[
             <MenuItem
-                onClick={() => setLanguageSearchClick('All')}
+                onClick={() => setLanguageSearchClick(null)}
             >
                 All
             </MenuItem>
         ];
-        data.forEach(item => {
+        repositoryData.forEach(item => {
             if (item.language&&!seen[item.language]) {
                 languages.push(
                     <MenuItem
@@ -95,7 +133,7 @@ const Repositories=(): JSX.Element => {
                     variant="outlined"
                     onClick={e => setTypeAnchorEl(e.currentTarget)}
                 >
-                    {typeSearch==='All'? 'Type':typeSearch}
+                    {typeSearch || 'Type'}
                     <ArrowDropDown />
                 </Button>
                 <Menu
@@ -104,7 +142,7 @@ const Repositories=(): JSX.Element => {
                     onClose={() => setTypeAnchorEl(null)}
                 >
                     <MenuItem
-                        onClick={() => setTypeSearchClick('All')}
+                        onClick={() => setTypeSearchClick(null)}
                     >
                         All
                     </MenuItem>
@@ -123,7 +161,7 @@ const Repositories=(): JSX.Element => {
                     variant="outlined"
                     onClick={e => setLanguageAnchorEl(e.currentTarget)}
                 >
-                    {languageSearch==='All'? 'Language':languageSearch}
+                    {languageSearch || 'Language'}
                     <ArrowDropDown />
                 </Button>
                 <Menu
