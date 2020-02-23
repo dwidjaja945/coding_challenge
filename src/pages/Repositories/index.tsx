@@ -100,6 +100,7 @@ const Repositories=(): JSX.Element => {
         const seen={};
         const languages=[
             <MenuItem
+                key="languages-all"
                 onClick={() => setLanguageSearchClick(null)}
             >
                 All
@@ -196,8 +197,8 @@ const Repositories=(): JSX.Element => {
             return bDate - aDate;
         });
         
-        return sortedData.map(item => (
-            <div className={styles.repoContainer}>
+        return sortedData.map((item, index) => (
+            <div key={`${item.id}-${index}`} className={styles.repoContainer}>
                 <div className={styles.mainInfo}>
                     <a className={styles.repoName}>
                         <div>

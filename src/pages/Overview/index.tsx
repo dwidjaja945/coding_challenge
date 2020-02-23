@@ -11,7 +11,7 @@ import styles from "./Overview.module.scss";
 type Props = {};
 
 const Overview = (props: Props): JSX.Element => {
-    const {loading, data, error} = useRepositoryContext();
+    const {loading, data} = useRepositoryContext();
 
     const modifyNumberCount=(stars: number): String => {
         if (stars<1000) {
