@@ -1,19 +1,9 @@
 @import "../../styles/variables.module.scss";
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
 .popularRepos {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1.5em 1em;
-  animation: fadeIn 0.1s ease-in;
 }
 
 .title {

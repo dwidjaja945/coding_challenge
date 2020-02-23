@@ -7,6 +7,7 @@ import BodyContainer from '../../components/BodyContainer';
 import { getLanguageColor } from '../../helperUtils/languageColorUtil';
 import StarIcon from "@material-ui/icons/Star";
 import CallSplitIcon from "@material-ui/icons/CallSplit";
+import NoteIcon from '@material-ui/icons/Note';
 
 import styles from './Repositories.module.scss';
 
@@ -175,8 +176,22 @@ const Repositories=(): JSX.Element => {
         </div>
     );
 
+    const getLastUpdatedTime = time => {
+        const date = new Date(time);
+        const dateString = date.toLocaleDateString(undefined, {
+            month: 'long',
+            day: '2-digit',
+            year: 'numeric'
+        });
+        return dateString;
+    };
+    
     const renderRepos = (): JSX.Element[] => {
-        const sortedData = data.sort((a, b) => b.stargazers_count - a.stargazers_count);
+        const sortedData = data.sort((a, b) => {
+            const aDate: any = new Date(a.updated_at);
+            const bDate: any = new Date(b.updated_at);
+            return bDate - aDate;
+        });
         
         return sortedData.map(item => (
             <div className={styles.repoContainer}>
@@ -199,13 +214,22 @@ const Repositories=(): JSX.Element => {
                                 {item.language}
                             </div>
                         ): null}
-                        <div className={styles.stars}>
+                        <div className={styles.logisticInfo}>
                             <StarIcon className={styles.icon} />
                             {item.stargazers_count}
                         </div>
-                        <div className={styles.stars}>
+                        <div className={styles.logisticInfo}>
                             <CallSplitIcon className={styles.icon} />
                             {item.forks_count}
+                        </div>
+                        {item.license ? (
+                            <div className={styles.logisticInfo}>
+                                <NoteIcon className={styles.icon} />
+                                {item.license.name}
+                            </div>
+                        ) : null}
+                        <div className={styles.logisticInfo}>
+                            Updated on {getLastUpdatedTime(item.updated_at)}
                         </div>
                     </div>
                 </div>
@@ -223,7 +247,7 @@ const Repositories=(): JSX.Element => {
     };
 
     return (
-        <BodyContainer>
+        <BodyContainer className={styles.container} >
             {renderSearchBar()}
             <div className={styles.divider} />
             {renderRepos()}

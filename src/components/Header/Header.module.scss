@@ -8,6 +8,7 @@
   height: 4em;
   padding: 0 1em;
   background-color: var(--backgroundColor, white);
+  z-index: 1;
 
   &::before {
     content: '';
@@ -26,7 +27,7 @@
     left: 0;
     right: 0;
     height: 15px;
-    background: linear-gradient(white, transparent);
+    background: linear-gradient(white, rgba(255,255,255,0));
   }
 }
 

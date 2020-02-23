@@ -1,5 +1,18 @@
 @import "../../styles/variables.module.scss";
 
+.container {
+    animation: fadeIn 0.2s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 .searchBarContainer {
     display: grid;
     grid-template-columns: 5fr 2fr;
@@ -30,6 +43,7 @@
 .repoContainer {
     display: grid;
     grid-template-columns: 3fr 1fr;
+    grid-gap: 2em;
     position: relative;
     margin: 1em 0;
     padding: 1em 0;
@@ -61,6 +75,7 @@
 .logistics {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     color: $grayLight;
     >* {
         margin-right: 0.5em;
@@ -68,14 +83,17 @@
 }
 
 .language,
-.stars {
+.logisticInfo {
     display: flex;
     align-items: center;
+    font-size: 0.75em;
+    white-space: nowrap;
 }
 
 .icon {
     font-size: 1em!important;
     color: $gray;
+    margin-right: 0.25em;
 }
 
 .languageIcon {
