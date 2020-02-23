@@ -40,6 +40,11 @@
     margin: 1em 0;
 }
 
+.repos {
+    transition: padding 0.2s ease;
+    padding: 0 20%;
+}
+
 .repoContainer {
     display: grid;
     grid-template-columns: 3fr 1fr;
@@ -122,11 +127,17 @@
     .searchBarContainer {
         grid-template-columns: 3fr 2fr;
     }
+    .repos {
+        padding: 0 8%;
+    }
 };
 
 @media only screen and (max-width: 720px) {
     .searchBarContainer {
         grid-template-columns: 2fr 2fr;
+    }
+    .repos {
+        padding: 0;
     }
 };
 

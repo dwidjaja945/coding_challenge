@@ -12,12 +12,12 @@ import NoteIcon from '@material-ui/icons/Note';
 import styles from './Repositories.module.scss';
 
 const Repositories=(): JSX.Element => {
-    const [searchText, setSearchText]=React.useState('');
-    const [typeAnchorEl, setTypeAnchorEl]=React.useState(null);
-    const [typeSearch, setTypeSearch]=React.useState(null);
+    const [searchText, setSearchText] = React.useState('');
+    const [typeAnchorEl, setTypeAnchorEl] = React.useState(null);
+    const [typeSearch, setTypeSearch] = React.useState(null);
 
-    const [languageAnchorEl, setLanguageAnchorEl]=React.useState(null);
-    const [languageSearch, setLanguageSearch]=React.useState(null);
+    const [languageAnchorEl, setLanguageAnchorEl] = React.useState(null);
+    const [languageSearch, setLanguageSearch] = React.useState(null);
 
     const { data: repositoryData } = useRepositoryContext();
 
@@ -250,7 +250,9 @@ const Repositories=(): JSX.Element => {
         <BodyContainer className={styles.container} >
             {renderSearchBar()}
             <div className={styles.divider} />
-            {renderRepos()}
+            <div className={styles.repos}>
+                {renderRepos()} 
+            </div>
         </BodyContainer>
     );
 };
