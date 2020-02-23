@@ -1,4 +1,5 @@
 import React from 'react';
+import { debounce } from 'lodash';
 import { TextField, Button, Menu, MenuItem } from '@material-ui/core';
 import { ArrowDropDown } from '@material-ui/icons';
 import { useRepositoryContext } from '../../providers/RepositoriesProvider';
@@ -17,8 +18,33 @@ const Repositories=(): JSX.Element => {
     const [languageAnchorEl, setLanguageAnchorEl]=React.useState(null);
     const [languageSearch, setLanguageSearch]=React.useState('All');
 
-    const { data } = useRepositoryContext();
+    const { data: repositoryData } = useRepositoryContext();
 
+    const [data, setData] = React.useState(repositoryData);
+
+    React.useEffect( () => {
+        setData(repositoryData);
+    } , [repositoryData]); 
+
+    const filterData = (search): void => {
+        if (!search) {
+            return setData(repositoryData);
+        };
+        const lowerCaseSearch = search.toLowerCase();
+        const filteredData = data.filter(item => {
+            const includesName = item.name.toLowerCase().includes(lowerCaseSearch);
+            const includesDescription = item.description?.toLowerCase().includes(lowerCaseSearch);
+            return includesName || includesDescription;
+        });
+        setData(filteredData);
+    };
+    
+    const handleSearchChange = (e): void => {
+        // debounce method in the future
+        setSearchText(e.target.value);
+        filterData(e.target.value);
+    };
+    
     const setTypeSearchClick = (type): void => {
         setTypeSearch(type);
         setTypeAnchorEl(null);
@@ -63,7 +89,7 @@ const Repositories=(): JSX.Element => {
                 classes={{
                     root: styles.textFieldRoot
                 }}
-                onChange={e => setSearchText(e.target.value)} />
+                onChange={handleSearchChange} />
             <div className={styles.buttons}>
                 <Button
                     variant="outlined"
