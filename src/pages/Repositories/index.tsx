@@ -40,7 +40,6 @@ const Repositories=(): JSX.Element => {
         const filteredData = dataToFilter.filter(item => {
             const includesName = item.name.toLowerCase().includes(lowerCaseSearch);
             const includesDescription = item.description?.toLowerCase().includes(lowerCaseSearch);
-            debugger;
             return includesName || includesDescription;
         });
         setData(filteredData);
