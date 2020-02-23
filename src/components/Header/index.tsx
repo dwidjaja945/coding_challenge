@@ -10,7 +10,7 @@ const REPOSITORIES = "/repositories";
 
 const Header = (props: Props) => {
   const location = useLocation();
-  const getClassName = (path: string) => {
+  const getClassName = (path: string | undefined) => {
     if (path === location.pathname) {
       return `${styles.link} ${styles.active}`;
     }
