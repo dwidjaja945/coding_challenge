@@ -32,10 +32,15 @@ const Repositories=(): JSX.Element => {
             setLanguageSearch(null);
             return setData(repositoryData);
         };
+        let dataToFilter = repositoryData;
+        if (typeSearch || languageSearch) {
+            dataToFilter = data;
+        }
         const lowerCaseSearch = search.toLowerCase();
-        const filteredData = data.filter(item => {
+        const filteredData = dataToFilter.filter(item => {
             const includesName = item.name.toLowerCase().includes(lowerCaseSearch);
             const includesDescription = item.description?.toLowerCase().includes(lowerCaseSearch);
+            debugger;
             return includesName || includesDescription;
         });
         setData(filteredData);
