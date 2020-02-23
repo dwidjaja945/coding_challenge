@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useRepositoryContext } from '../../providers/RepositoriesProvider';
 
 import styles from "./Header.module.scss";
 
@@ -16,6 +17,9 @@ const Header = (props: Props) => {
     }
     return styles.link;
   };
+
+  const { data } = useRepositoryContext();
+
   return (
     <div className={styles.container}>
       <Link className={getClassName(OVERVIEW)} to={OVERVIEW}>
@@ -23,6 +27,9 @@ const Header = (props: Props) => {
       </Link>
       <Link className={getClassName(REPOSITORIES)} to={REPOSITORIES}>
         Repositories
+        <div className={styles.repositoryCount}>
+            {data.length}
+        </div>
       </Link>
     </div>
   );

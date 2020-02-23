@@ -16,7 +16,7 @@
     left: 0;
     right: 0;
     height: 2px;
-    background-color: lighten($gray, 50%);
+    background-color: $lightGray;
   }
 
   &::after {
@@ -35,12 +35,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 7.5em;
+  min-width: 6em;
   text-decoration: none;
   color: $gray;
   transition: color 0.2s ease;
   height: 100%;
   font-weight: bold;
+  padding: 0 0.5em;
 
   &::after {
     position: absolute;
@@ -66,4 +67,16 @@
       opacity: 1;
     }
   }
+}
+
+.repositoryCount {
+    margin: 0 0.25em;
+    height: 1.5em;
+    width: 1.5em;
+    border-radius: 100%;
+    background-color: #eeeeee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75em;
 }

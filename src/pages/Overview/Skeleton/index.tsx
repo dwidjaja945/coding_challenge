@@ -12,8 +12,8 @@ const OverviewSkeleton = (): JSX.Element => (
     <div className={styles.cardContainer}>
       {Array(6)
         .fill(null)
-        .map(item => (
-          <div className={styles.card}>
+        .map((item, index) => (
+          <div key={`skeleton-${index}`} className={styles.card}>
             <div className={styles.mainInfo}>
               <Skeleton height={30} width={Math.random() * 90 + 30} />
               <Skeleton height={20} width="80%" />

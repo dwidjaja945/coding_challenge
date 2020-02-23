@@ -1,9 +1,19 @@
 @import "../../styles/variables.module.scss";
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 .popularRepos {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1.5em 1em;
+  animation: fadeIn 0.1s ease-in;
 }
 
 .title {
@@ -20,10 +30,11 @@
 }
 
 .repoName {
-  color: $blue;
-  font-weight: bold;
-  margin-bottom: 0.5em;
-  cursor: pointer;
+    display: block;
+    color: $blue;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    cursor: pointer;
 }
 
 .mainInfo {
@@ -65,5 +76,5 @@
 
 .icon {
   color: $gray;
-  font-size: 1em;
+  font-size: 1.2em!important;
 }
