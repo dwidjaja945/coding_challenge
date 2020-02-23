@@ -26,7 +26,7 @@ const Repositories=(): JSX.Element => {
         setData(repositoryData);
     } , [repositoryData]); 
 
-    const filterData = (search): void => {
+    const filterData = (search: String): void => {
         if (!search) {
             setTypeSearch(null);
             setLanguageSearch(null);
@@ -49,16 +49,16 @@ const Repositories=(): JSX.Element => {
         if (typeSearch || languageSearch) {
             const filteredData = repositoryData.filter(item => {
                 const isPrivate = item.private;
-                const lowerCaseType = typeSearch?.toLowerCase();
+                const typeLowerCased = typeSearch?.toLowerCase();
                 let returnLanguage = false;
                 let returnType = false;
                 if (item.language === languageSearch || !languageSearch) {
                     returnLanguage = true;
                 };
-                if (!lowerCaseType) {
+                if (!typeLowerCased) {
                     returnType = true;
                 } else {
-                    switch (lowerCaseType) {
+                    switch (typeLowerCased) {
                         case 'private':
                             if (isPrivate) {
                                 returnType = true
@@ -86,12 +86,12 @@ const Repositories=(): JSX.Element => {
         filterData(e.target.value);
     };
     
-    const setTypeSearchClick = (type): void => {
+    const setTypeSearchClick = (type: String): void => {
         setTypeSearch(type);
         setTypeAnchorEl(null);
     }
 
-    const setLanguageSearchClick = (language): void => {
+    const setLanguageSearchClick = (language: String): void => {
         setLanguageSearch(language);
         setLanguageAnchorEl(null);
     }
