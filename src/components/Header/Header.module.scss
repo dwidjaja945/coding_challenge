@@ -1,0 +1,69 @@
+@import '../../styles/variables.module.scss';
+
+.container {
+  display: flex;
+  position: sticky;
+  top: 0;
+  min-height: 4em;
+  height: 4em;
+  padding: 0 1em;
+  background-color: var(--backgroundColor, white);
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: lighten($gray, 50%);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 15px;
+    background: linear-gradient(white, transparent);
+  }
+}
+
+.link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 7.5em;
+  text-decoration: none;
+  color: $gray;
+  transition: color 0.2s ease;
+  height: 100%;
+  font-weight: bold;
+
+  &::after {
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    content: '';
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: $orange;
+    transition: opacity 0.2s ease;
+  }
+
+  &:hover {
+    color: darken($gray, 10%);
+  }
+  &:focus {
+    color: darken($gray, 20%);
+  }
+  &.active {
+    &::after {
+      opacity: 1;
+    }
+  }
+}

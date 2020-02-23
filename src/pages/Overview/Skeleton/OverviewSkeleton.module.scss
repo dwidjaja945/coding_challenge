@@ -1,0 +1,40 @@
+@import "../../../styles/variables.module.scss";
+
+.title {
+  margin-bottom: 1em;
+}
+
+.cardContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1.5em 1em;
+}
+
+.card {
+  min-height: 5em;
+  border: 1px solid #eeeeee;
+  border-radius: 2px;
+  padding: 1em;
+}
+
+.mainInfo {
+  margin-bottom: 1em;
+}
+
+.subInfo {
+  display: flex;
+
+  >* {
+    margin-right: 10px;
+  }
+}
+
+.language {
+  display: flex;
+  align-items: center;
+  width: 7.5em;
+}
+
+.languageIcon {
+  margin-right: 10px;
+}
