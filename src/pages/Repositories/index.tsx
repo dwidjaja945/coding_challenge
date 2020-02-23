@@ -1,5 +1,4 @@
 import React from 'react';
-import { debounce } from 'lodash';
 import { TextField, Button, Menu, MenuItem } from '@material-ui/core';
 import { ArrowDropDown } from '@material-ui/icons';
 import { useRepositoryContext } from '../../providers/RepositoriesProvider';
