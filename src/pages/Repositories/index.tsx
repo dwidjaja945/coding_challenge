@@ -82,7 +82,6 @@ const Repositories=(): JSX.Element => {
     } , [typeSearch, languageSearch]);
     
     const handleSearchChange = (e): void => {
-        // debounce method in the future
         setSearchText(e.target.value);
         filterData(e.target.value);
     };
