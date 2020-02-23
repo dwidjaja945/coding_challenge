@@ -189,6 +189,7 @@ const Repositories=(): JSX.Element => {
     };
     
     const renderRepos = (): JSX.Element[] => {
+        // sort by latest updated
         const sortedData = data.sort((a, b) => {
             const aDate: any = new Date(a.updated_at);
             const bDate: any = new Date(b.updated_at);
