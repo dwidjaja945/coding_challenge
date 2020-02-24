@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useRepositoryContext } from '../../providers/RepositoriesProvider';
+import { useRepositoryContext } from 'providers/RepositoriesProvider';
 
 import styles from "./Header.module.scss";
 

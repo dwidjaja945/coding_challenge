@@ -1,11 +1,11 @@
 import React from "react";
-import BodyContainer from "../../components/BodyContainer";
+import BodyContainer from "components/BodyContainer";
 import StarIcon from "@material-ui/icons/Star";
 import CallSplitIcon from "@material-ui/icons/CallSplit";
 import Skeleton from "./Skeleton";
-import { useRepositoryContext } from '../../providers/RepositoriesProvider';
-import { getLanguageColor } from "../../helperUtils/languageColorUtil";
-import { useDocumentTitle } from '../../helperUtils/hooks/useDocumentTitle';
+import { useRepositoryContext } from 'providers/RepositoriesProvider';
+import { getLanguageColor } from "helperUtils/languageColorUtil";
+import { useDocumentTitle } from 'helperUtils/hooks/useDocumentTitle';
 
 import styles from "./Overview.module.scss";
 

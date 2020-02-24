@@ -1,6 +1,6 @@
 import React from "react";
 import Skeleton from "@material-ui/lab/Skeleton";
-import BodyContainer from "../../../components/BodyContainer";
+import BodyContainer from "components/BodyContainer";
 
 import styles from "./OverviewSkeleton.module.scss";
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFetch } from '../helperUtils/hooks/useFetch';
+import { useFetch } from 'helperUtils/hooks/useFetch';
 
 const RepositoryContext=React.createContext(null);
 

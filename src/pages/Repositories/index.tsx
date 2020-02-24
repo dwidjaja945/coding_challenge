@@ -1,10 +1,10 @@
 import React from 'react';
 import { TextField, Button, Menu, MenuItem } from '@material-ui/core';
 import { ArrowDropDown } from '@material-ui/icons';
-import { useRepositoryContext } from '../../providers/RepositoriesProvider';
-import BodyContainer from '../../components/BodyContainer';
-import { getLanguageColor } from '../../helperUtils/languageColorUtil';
-import { useDocumentTitle } from '../../helperUtils/hooks/useDocumentTitle';
+import { useRepositoryContext } from 'providers/RepositoriesProvider';
+import BodyContainer from 'components/BodyContainer';
+import { getLanguageColor } from 'helperUtils/languageColorUtil';
+import { useDocumentTitle } from 'helperUtils/hooks/useDocumentTitle';
 import StarIcon from "@material-ui/icons/Star";
 import CallSplitIcon from "@material-ui/icons/CallSplit";
 import NoteIcon from '@material-ui/icons/Note';
