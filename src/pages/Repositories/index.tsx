@@ -4,13 +4,14 @@ import { ArrowDropDown } from '@material-ui/icons';
 import { useRepositoryContext } from '../../providers/RepositoriesProvider';
 import BodyContainer from '../../components/BodyContainer';
 import { getLanguageColor } from '../../helperUtils/languageColorUtil';
+import { useDocumentTitle } from '../../helperUtils/hooks/useDocumentTitle';
 import StarIcon from "@material-ui/icons/Star";
 import CallSplitIcon from "@material-ui/icons/CallSplit";
 import NoteIcon from '@material-ui/icons/Note';
 
 import styles from './Repositories.module.scss';
 
-const Repositories=(): JSX.Element => {
+const Repositories = (): JSX.Element => {
     const [searchText, setSearchText] = React.useState('');
     const [typeAnchorEl, setTypeAnchorEl] = React.useState(null);
     const [typeSearch, setTypeSearch] = React.useState(null);
@@ -22,11 +23,13 @@ const Repositories=(): JSX.Element => {
 
     const [data, setData] = React.useState(repositoryData);
 
+    useDocumentTitle('Repositories - Github');
+
     React.useEffect( () => {
         setData(repositoryData);
     } , [repositoryData]); 
 
-    const filterData = (search: String): void => {
+    const filterData = (search: string): void => {
         if (!search) {
             setTypeSearch(null);
             setLanguageSearch(null);
@@ -86,12 +89,12 @@ const Repositories=(): JSX.Element => {
         filterData(e.target.value);
     };
     
-    const setTypeSearchClick = (type: String): void => {
+    const setTypeSearchClick = (type: string): void => {
         setTypeSearch(type);
         setTypeAnchorEl(null);
     }
 
-    const setLanguageSearchClick = (language: String): void => {
+    const setLanguageSearchClick = (language: string): void => {
         setLanguageSearch(language);
         setLanguageAnchorEl(null);
     }

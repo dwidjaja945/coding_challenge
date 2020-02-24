@@ -5,6 +5,7 @@ import CallSplitIcon from "@material-ui/icons/CallSplit";
 import Skeleton from "./Skeleton";
 import { useRepositoryContext } from '../../providers/RepositoriesProvider';
 import { getLanguageColor } from "../../helperUtils/languageColorUtil";
+import { useDocumentTitle } from '../../helperUtils/hooks/useDocumentTitle';
 
 import styles from "./Overview.module.scss";
 
@@ -13,6 +14,8 @@ type Props = {};
 const Overview = (props: Props): JSX.Element => {
     const {loading, data} = useRepositoryContext();
 
+    useDocumentTitle('Overview - GitHub');
+    
     const modifyNumberCount=(stars: number): String => {
         if (stars<1000) {
             return String(stars);
