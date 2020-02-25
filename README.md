@@ -1,4 +1,4 @@
-## Cylance Coding Challenge
+## Coding Challenge
 ### Recreate GitHub UI
 
 #### Directions to Run App
