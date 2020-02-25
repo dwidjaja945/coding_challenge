@@ -3,7 +3,7 @@
 
 #### Directions to Run App
 ##### Method 1
-1. Load files for the project
+1. Clone this project
 2. Run `npm install` in the terminal for this project
 3. Run `npm start` in the terminal
 4. Open `http://localhost:3000` in the browser of your choice
